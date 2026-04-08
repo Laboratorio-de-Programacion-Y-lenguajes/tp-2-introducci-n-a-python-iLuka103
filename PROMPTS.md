@@ -189,16 +189,19 @@ Explicación: Una lista es mutable, por lo tanto no puede ser una "clave" en un 
 
 ### 5 - loops.py
 
-**Herramienta**: 
+**Herramienta**: google gemini
 
 **Prompt usado**:
-> 
+> P1: como obtengo determinados N numeros de una lista?
+P2: como hago para que al determinar un numero por finalizado, no me tome en cuenta los numeros repetidos o negativos?
 
 **Resultado obtenido**:
+P1: ¿Cómo obtengo determinados N números de una lista?La forma más eficiente es mediante el slicing. La sintaxis básica es lista[inicio:fin].Los primeros $N$ elementos: lista[:N]Los últimos $N$ elementos: lista[-N:]Un rango específico: lista[2:5] (obtiene desde el índice 2 hasta el 4).
 
+P2: ¿Cómo evitar números repetidos o negativos?Aquí es donde aplicamos la lógica de limpieza. Para resolver esto, lo más "Pythonic" es seguir este orden: Filtrar negativos → Eliminar repetidos → Obtener los N números.El "Combo" de herramientas:Sets (Conjuntos): Al transformar una lista a un set(), Python elimina automáticamente todos los duplicados.List Comprehension: Una forma rápida de filtrar los negativos.
 
 **¿Lo usaste tal cual o lo modificaste?**
-
+lo tuve en cuenta tal cual
 
 ---
 
