@@ -53,16 +53,41 @@ Retorno Dinámico: A diferencia de otros lenguajes donde tenés que declarar el 
 
 ### 2 - condicionales.py
 
-**Herramienta**: 
+**Herramienta**: Google Gemini
 
 **Prompt usado**:
-> 
+> Quiero implementar la función es_bisiesto(anio: int) -> bool en Python 3.13.
+
+Antes de escribir el código, haceme 3 preguntas clave para confirmar:
+
+-Cómo manejar los años que son divisibles por 100 pero no por 400 (ejemplo: 1900).
+
+-Será una estructura de código con múltiples if/else anidados o una sola expresión booleana (una sola línea de return).
+
+-Qué tipo de validación debemos hacer si el usuario ingresa un número negativo o un valor que no sea un entero.
 
 **Resultado obtenido**:
+1. El filtro del "Siglo" (Divisibilidad por 100 y 400)
+Según el calendario gregoriano, los años divisibles por 100 no son bisiestos, a menos que también sean divisibles por 400.
 
+La pregunta: ¿Quieres que la función siga estrictamente la regla gregoriana (donde 1900 es falso y 2000 es verdadero), o necesitas algún manejo especial para fechas históricas muy antiguas?
+
+2. Estilo de implementación
+En Python 3.13, la legibilidad es ley, pero hay dos caminos muy comunes para este problema.
+
+Opción A (Estructural): Usar if/else anidados. Es muy fácil de leer paso a paso y de depurar.
+
+Opción B (Pythonic/Funcional): Una sola expresión lógica con and, or y not. Es elegante y concisa.
+
+La pregunta: ¿Con cuál de los dos enfoques te sientes más cómodo para este proyecto?
+
+3. Robustez y validación de tipos
+Dado que Python es de tipado dinámico (aunque uses type hints), el usuario podría pasar un string o un número negativo.
+
+La pregunta: ¿Prefieres que la función simplemente lance un error estándar si el dato es inválido, o quieres que manejemos una excepción personalizada (como un ValueError con un mensaje amigable) o que devuelva False por defecto?
 
 **¿Lo usaste tal cual o lo modificaste?**
-
+Ya tenía conocimientos más o menos y me daba una idea de cómo resolverlo, pero igual está el prompt
 
 ---
 
@@ -71,13 +96,34 @@ Retorno Dinámico: A diferencia de otros lenguajes donde tenés que declarar el 
 **Herramienta**: 
 
 **Prompt usado**:
-> 
+> Estoy resolviendo el ejercicio filtrar_pares(numeros) en Python con estas reglas:
+
+Debe retornar una nueva lista que contenga solo los números pares de la lista original.
+Un número es par si el resto de su división por 2 es 0.
+¿Podés actuar como mi verificador cognitivo para este problema?
+
+Casos borde: Enumerá qué tipos de listas debería testear (por ejemplo, listas vacías, listas sin pares o listas con números negativos).
+
+Errores típicos: Decime qué fallas comunes ocurren al filtrar (por ejemplo, modificar la lista original por error o problemas con el número 0).
+
+Validación de resultados: Proponé 3 tests con entradas (listas de ejemplo) y las salidas esperadas, pero no escribas el código todavía, solo ayudame a verificar que mi plan lógico sea correcto.
 
 **Resultado obtenido**:
+1. Casos Borde (Edge Cases)Para que tu función sea robusta, no basta con probar [1, 2, 3, 4]. Deberías verificar qué sucede con:Lista Vacía ([]): El resultado debería ser otra lista vacía sin lanzar errores.Lista sin Pares ([1, 3, 5, 7]): Debe retornar una lista vacía.Lista de solo Pares ([2, 4, 6]): Debe retornar una copia idéntica (o una nueva lista con los mismos valores).Números Negativos ([-2, -1, 0, 1, 2]): Recordá que $-2$ y $0$ son técnicamente pares.Listas con el número 0: El cero suele confundir, pero $0 \pmod 2 = 0$, por lo que es par.
 
+2. Errores Típicos (Pitfalls)
+Estos son los "pecados capitales" que suelen ocurrir en este ejercicio:
+
+Efectos secundarios (Mutación): Modificar la lista numeros original usando .remove() mientras la iterás. Esto hace que el "puntero" del bucle se salte elementos. Regla de oro: Siempre creá una lista nueva.
+
+Confusión de Operadores: Usar / (división flotante) en lugar de % (módulo). Recordá que buscamos que n % 2 == 0.
+
+Olvidar el return: Parece obvio, pero a veces uno imprime los resultados (print) en lugar de devolverlos, lo que rompe la cadena de datos si otra función necesita esa lista.
+
+. Validación de Resultados (Plan de Testeo)Antes de programar, confirmemos que estos resultados son los que esperás:Entrada (Lista original)Proceso LógicoSalida Esperada[1, 2, 3, 4, 5, 6]Filtra 2, 4 y 6[2, 4, 6][0, -2, -3, 10]0, -2 y 10 cumplen la condición[0, -2, 10][1, 7, 13]Ninguno es divisible por 2[]
 
 **¿Lo usaste tal cual o lo modificaste?**
-
+Sinceramente no lo comprendí del todo y le tuve que pedir ayuda a mis compañeros
 
 ---
 
@@ -86,10 +132,55 @@ Retorno Dinámico: A diferencia de otros lenguajes donde tenés que declarar el 
 **Herramienta**: 
 
 **Prompt usado**:
-> 
+> Generá 5 ejemplos distintos de diccionarios en Python que contengan pares clave-valor de diferentes tipos (por ejemplo, str: int, str: str, int: float).
+
+Para cada ejemplo:
+
+-Mostrá el diccionario original.
+-Mostrá cómo quedaría el diccionario invertido (donde lo que era valor ahora sea clave y viceversa).
+-Incluí al menos un ejemplo donde los valores originales sean idénticos para ver qué sucede en la inversión.
+
+Finalmente, basándote en estos ejemplos, extraé una regla general o una limitación técnica que deba tenerse en cuenta al implementar la función invertir_diccionario(d).
 
 **Resultado obtenido**:
+Ejemplo 1: El Inventario (String a Int)
+Este es el caso más común, útil para conteos o stock.
 
+Original: {'manzanas': 50, 'peras': 30, 'naranjas': 25}
+
+Invertido: {50: 'manzanas', 30: 'peras', 25: 'naranjas'}
+
+Ejemplo 2: Diccionario de Traducción (String a String)
+Mapeo simple entre palabras de distintos idiomas.
+
+Original: {'red': 'rojo', 'blue': 'azul', 'green': 'verde'}
+
+Invertido: {'rojo': 'red', 'azul': 'blue', 'verde': 'green'}
+
+Ejemplo 3: Escala de Precisión (Int a Float)
+Mapeo de identificadores numéricos a valores decimales.
+
+Original: {1: 10.5, 2: 20.75, 3: 5.0}
+
+Invertido: {10.5: 1, 20.75: 2, 5.0: 3}
+
+Ejemplo 4: Colisión de Valores (Valores Idénticos)
+¿Qué pasa cuando dos llaves apuntan al mismo valor?
+
+Original: {'Alice': 25, 'Bob': 30, 'Charlie': 25}
+
+Invertido: {25: 'Charlie', 30: 'Bob'}
+
+Nota cognitiva: Observá que 'Alice' desapareció. En Python, al invertir, la última clave procesada pisa a la anterior si los valores eran iguales.
+
+Ejemplo 5: El caso del "Un-hashable" (Valor que no puede ser Clave)
+Intentemos usar una lista como valor.
+
+Original: {'id_1': [1, 2, 3], 'id_2': [4, 5, 6]}
+
+Invertido: Error de Python (TypeError: unhashable type: 'list').
+
+Explicación: Una lista es mutable, por lo tanto no puede ser una "clave" en un diccionario.
 
 **¿Lo usaste tal cual o lo modificaste?**
 

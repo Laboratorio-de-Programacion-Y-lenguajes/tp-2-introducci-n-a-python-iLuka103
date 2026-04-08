@@ -7,7 +7,7 @@ def contar_hasta(n: int) -> list:
     """
     Retorna una lista con los números del 1 al n (inclusive).
     """
-    # TU CÓDIGO AQUÍ
+    return list(range(1, n + 1))
     pass
 
 
