@@ -207,13 +207,31 @@ lo tuve en cuenta tal cual
 
 ### 6 - funciones.py
 
-**Herramienta**: 
+**Herramienta**: google gemini
 
 **Prompt usado**:
-> 
+> > Necesito una función para `def memoizar(func): cache = {}` en Python 3.13.  
+> Quiero comparar enfoques y elegir uno simple y performante para un TP:  
+> - split + count  
+> - recorrer manualmente  
+> - regex 
+Analiza pros y contras(performance + simplicidad + edge cases como puntuación)
+Luego recomendá UNO y escribí el código con docstring, No uses librerias externas
 
 **Resultado obtenido**:
+Asumiendo que el objetivo es contar la frecuencia de palabras en un texto (el uso más común para comparar estos métodos)
 
+**Muestra una tabla de Split + Count, recorrer manualmente y regex**
+
+Recomendación: Recorrido Manual con Diccionario
+Para un TP, te recomiendo el Recorrido Manual con un Diccionario.
+¿Por qué?
+
+Eficiencia Lineal: A diferencia de count, que es lentísimo en textos largos, el diccionario busca términos de forma casi instantánea.
+
+Sin Librerías: Regex requiere import re. El recorrido manual es Python puro.
+
+Transparencia: Demuestra que entendés cómo funcionan las estructuras de datos.
 
 **¿Lo usaste tal cual o lo modificaste?**
 
