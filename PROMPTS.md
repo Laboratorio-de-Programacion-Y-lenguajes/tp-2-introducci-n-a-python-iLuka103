@@ -243,13 +243,25 @@ Transparencia: Demuestra que entendés cómo funcionan las estructuras de datos.
 **Herramienta**: 
 
 **Prompt usado**:
-> 
+> Tengo que implementar es_palindromo(texto: str) -> bool. Compará estos 3 enfoques:
+
+A) Enfoque Slicing: Usar texto[::-1] para comparar el string con su versión invertida.
+
+B) Enfoque Iterativo (Two-Pointers): Usar un bucle y comparar caracteres desde los extremos hacia el centro (índice i e índice -i-1) sin crear copias del string.
+
+C) Enfoque Funcional: Usar reversed() y all() para comparar las mitades del texto.
+
+Analizá pros y contras (performance de memoria, legibilidad y facilidad de testeo). Elegí el más adecuado para un entorno de producción con textos muy largos y escribí el código final con pytest.
 
 **Resultado obtenido**:
+Implementar un verificador de palíndromos es un ejercicio clásico para entender la gestión de memoria en Python. Cuando hablamos de entornos de producción con textos muy largos, la eficiencia de memoria pasa a ser el factor determinante.
 
+Aquí tenés el análisis comparativo de los tres enfoques:
+
+**lista de criterios, memoria, rendimiento, legibilidad y textos largos**
 
 **¿Lo usaste tal cual o lo modificaste?**
-
+lo usé tal cual, tomé en cuenta como está escrito en readme.md pero lo modifiqué a uno de los problemas
 
 ---
 
@@ -260,3 +272,5 @@ Respondé brevemente (3-5 oraciones):
 - ¿Qué aprendiste sobre cómo formular buenos prompts?
 - ¿En qué casos la IA fue útil y en cuáles no?
 - ¿Qué harías diferente la próxima vez?
+
+Una vez sabes lo que buscas o las dudas que queres hacerle es más sencillo pedir que te explique de cierta forma para poder entenderlo, usualmente te tira lo más recomendado y hasta incluso no se entiende, la ia fue util en mayoría de casos pero en unos cuantos es complicado interpretarlo bien y recurro a que me lo explique mejor, lo que haría diferente la próxima es darle más limitaciones y buscar la forma de que lo explique con alguna comparativa o analogia con un lenguaje que yo ya entienda y pueda interpretar facilmente
